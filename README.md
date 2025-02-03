@@ -1,23 +1,23 @@
-# Omniauth::Passthrough
+# omniauth-passthrough
 
-TODO: Delete this and the text below, and describe your gem
+An OmniAuth strategy that passes request params straight through the middleware.
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/omniauth/passthrough`. To experiment with that code, run `bin/console` for an interactive prompt.
+This strategy allows you to pass auth hash values directly to an auth endpoint and forwards them directly to your
+callback(s). The end goal of this is to provide more flexibility when writing login helpers in development/test
+environments while still utilizing your OmniAuth callback(s).
 
 ## Installation
-
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
 
 Install the gem and add to the application's Gemfile by executing:
 
 ```bash
-bundle add UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+bundle add omniauth-passthrough
 ```
 
 If bundler is not being used to manage dependencies, install the gem by executing:
 
 ```bash
-gem install UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+gem install omniauth-passthrough
 ```
 
 ## Usage
@@ -26,9 +26,10 @@ TODO: Write usage instructions here
 
 ## Development
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake spec` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+* Run `bin/setup` to install dependencies.
+* Run `bin/rake appraisal spec` to run the tests.
+* Run `bin/rake rubocop` to run the linter.
+* Run `bin/console` for an interactive prompt that will allow you to experiment.
 
 ## Contributing
 

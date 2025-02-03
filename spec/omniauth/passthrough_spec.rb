@@ -1,11 +1,9 @@
 # frozen_string_literal: true
 
-RSpec.describe Omniauth::Passthrough do
-  it "has a version number" do
-    expect(Omniauth::Passthrough::VERSION).not_to be nil
-  end
+require "omniauth/passthrough"
 
-  it "does something useful" do
-    expect(false).to eq(true)
+RSpec.describe OmniAuth::Passthrough do
+  it "has a version number" do
+    expect(OmniAuth::Passthrough::VERSION).not_to be_nil
   end
 end

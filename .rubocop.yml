@@ -1,5 +1,21 @@
+require:
+  - rubocop-performance
+  - rubocop-rake
+  - rubocop-rspec
+
 AllCops:
-  TargetRubyVersion: 3.1
+  Exclude:
+    - bin/rake
+    - gemfiles/**/*
+  NewCops: enable
+  TargetRubyVersion: 3.2
+
+RSpec/SpecFilePathFormat:
+  CustomTransform:
+    OmniAuth: omniauth
+
+Style/Documentation:
+  Enabled: false
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
