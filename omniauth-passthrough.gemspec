@@ -24,7 +24,6 @@ Gem::Specification.new do |spec|
 
   spec.version = OmniAuth::Passthrough::VERSION
   spec.required_ruby_version = ">= 3.2"
-  spec.add_dependency "builder", ">= 3.0.0", "< 4"
   spec.add_dependency "omniauth", ">= 2.1.1", "< 3"
   spec.add_dependency "rack", ">= 2.2.3", "< 4"
 end

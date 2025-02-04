@@ -8,8 +8,8 @@ require_relative "test_app"
 module ActionDispatchHelper
   include Rack::Test::Methods
 
-  alias rack_post post
-  def post(url, params: {}) = rack_post url, params
+  alias rack_get get
+  def get(url, params: {}) = rack_get url, params
 
   def self.included(example)
     example.include AuthenticityTokenHelper

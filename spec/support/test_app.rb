@@ -23,8 +23,8 @@ class TestApp < Sinatra::Base
 
   get "/session" do
     <<~HTML
-      <div class="uid">#{session[:uid]}</div>
-      <div class="email">#{session[:email]}</div>
+      <div id="uid">#{session[:uid]}</div>
+      <div id="email">#{session[:email]}</div>
     HTML
   end
 

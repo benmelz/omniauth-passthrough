@@ -7,14 +7,7 @@ RSpec.describe OmniAuth::Passthrough::CapybaraMiddleware, :capybara do
 
   before { visit "/omniauth_passthrough_capybara?#{query_string}" }
 
-  it "renders a form that forwards query string params to the passthrough endpoint" do
-    form = page.find("form")
-    expect([form[:method], form[:action]]).to eq(%W[post /auth/passthrough?#{query_string}])
-  end
-
-  it "renders a submit button for the form" do
-    within "form" do
-      expect(page).to have_css("input[type=\"submit\"][value=\"Submit\"]")
-    end
+  it "renders an authentication link" do
+    expect(page).to have_link("Authenticate", href: "/auth/passthrough/callback?#{query_string}")
   end
 end
