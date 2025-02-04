@@ -19,8 +19,7 @@ RSpec.describe OmniAuth::Passthrough::RackHelper do
 
     it "authenticates with the omniauth passthrough strategy" do
       call
-      expect(JSON.parse(last_response.body)).to eq({ "auth" => params.except("even").merge("provider" => "passthrough"),
-                                                     "params" => params })
+      expect(last_request).to be_a_passthrough_callback_with(params)
     end
   end
 end

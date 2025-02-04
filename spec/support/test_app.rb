@@ -19,10 +19,16 @@ class TestApp < Sinatra::Base
     200
   end
 
+  get "/session" do
+    <<~HTML
+      <div class="uid">#{session[:uid]}</div>
+      <div class="email">#{session[:email]}</div>
+    HTML
+  end
+
   get "/auth/passthrough/callback" do
-    content_type :json
-    auth = request.env["omniauth.auth"].to_h
-                  .transform_values { |value| value.respond_to?(:to_h) ? value.to_h : value }
-    { auth:, params: }.to_json
+    session[:uid] = request.env["omniauth.auth"].uid
+    session[:email] = request.env["omniauth.auth"].info.email
+    200
   end
 end
