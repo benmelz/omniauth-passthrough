@@ -6,7 +6,7 @@ module OmniAuth
       def omniauth_passthrough(params = {})
         original_url = current_url
         visit "/auth/passthrough/callback?#{Rack::Utils.build_nested_query(params)}"
-        visit original_url if current_url != original_url
+        visit original_url
       end
     end
   end
