@@ -22,7 +22,23 @@ gem install omniauth-passthrough
 
 ## Usage
 
-TODO: Write usage instructions here
+Include the passthrough strategy in development/test environments as you would with any other OmniAuth
+strategy. *NEVER* use it in a production environment.
+
+Once included, any POST request to `/auth/passthrough` will pass through any `uid`, `info`, `credentials` and `extra`
+params to your omniauth callback.
+
+```ruby 
+# request
+post '/auth/passthrough', params: { uid: 'my-uid',
+                                    info: { email: 'my-email@example.com', first_name: 'My', last_name: 'Name' } }
+
+# callback
+request.env['omniauth.auth'].uid # => 'my-uid'
+request.env['omniauth.auth'].info.email # => 'my-email@example.com'
+request.env['omniauth.auth'].info.first_name # => 'My'
+request.env['omniauth.auth'].info.last_name # => 'Name'
+```
 
 ## Development
 
