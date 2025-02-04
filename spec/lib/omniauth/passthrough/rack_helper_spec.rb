@@ -1,17 +1,12 @@
 # frozen_string_literal: true
 
 require "json"
-require "sinatra_helper"
-require "omniauth/passthrough/action_dispatch_helper"
+require "omniauth/passthrough/rack_helper"
 
-RSpec.describe OmniAuth::Passthrough::ActionDispatchHelper do
+RSpec.describe OmniAuth::Passthrough::RackHelper do
   include described_class
 
-  # simulate ActionDispatch::Integration::Session#post
-  alias_method :rack_post, :post
-  def post(url, params: {}) = rack_post(url, params)
-
-  describe "#omniauth_passthrough" do
+  describe "#omniauth_passthrough", :rack do
     subject(:call) { omniauth_passthrough(params) }
 
     let(:params) do

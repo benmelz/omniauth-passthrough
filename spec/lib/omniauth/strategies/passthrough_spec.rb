@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
 require "omniauth/strategies/passthrough"
-require "sinatra_helper"
 
 RSpec.describe OmniAuth::Strategies::Passthrough do
-  describe "POSTing to the callback endpoint" do
+  describe "POSTing to the callback endpoint", :rack do
     subject(:authenticate) do
       post "/auth/passthrough", params
       follow_redirect!

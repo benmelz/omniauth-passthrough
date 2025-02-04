@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 require "simplecov"
+require_relative "support/action_dispatch_helper"
+require_relative "support/capybara_helper"
+require_relative "support/rack_helper"
 
 SimpleCov.start do
   add_filter %r{^/spec/}
@@ -14,4 +17,7 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+  config.include ActionDispatchHelper, :action_dispatch
+  config.include CapybaraHelper, :capybara
+  config.include RackHelper, :rack
 end

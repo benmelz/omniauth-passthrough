@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
 require "json"
-require "sinatra_helper"
-require "omniauth/passthrough/rack_helper"
+require "omniauth/passthrough/action_dispatch_helper"
 
-RSpec.describe OmniAuth::Passthrough::RackHelper do
+RSpec.describe OmniAuth::Passthrough::ActionDispatchHelper do
   include described_class
 
-  describe "#omniauth_passthrough" do
+  describe "#omniauth_passthrough", :action_dispatch do
     subject(:call) { omniauth_passthrough(params) }
 
     let(:params) do
