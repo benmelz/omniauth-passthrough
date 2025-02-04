@@ -40,6 +40,18 @@ request.env['omniauth.auth'].info.first_name # => 'My'
 request.env['omniauth.auth'].info.last_name # => 'Name'
 ```
 
+### Test Environments
+
+A number of test helpers are provided to help with using the strategy for test login helpers.
+
+```ruby
+# including one of the following helpers in your test
+include Omniauth::Passthrough::RackHelper # Rack::Test
+
+# will make the following login helper available
+omniauth_passthrough(uid: 'my-uid', info: { email: 'my-email@example.com', first_name: 'My', last_name: 'Name' })
+```
+
 ## Development
 
 * Run `bin/setup` to install dependencies.
