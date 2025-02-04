@@ -17,6 +17,10 @@ class TestApp < Sinatra::Base
     set :environment, :test
   end
 
+  get "/" do
+    200
+  end
+
   get "/auth/passthrough/callback" do
     200
   end
