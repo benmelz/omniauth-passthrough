@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "json"
+require "omniauth/passthrough/capybara_middleware"
 require "omniauth/strategies/passthrough"
 require "rack/protection"
 require "rack/session"
@@ -10,6 +11,7 @@ class TestApp < Sinatra::Base
   use Rack::Session::Cookie, secret: "test" * 16
   use Rack::Protection
   use OmniAuth::Strategies::Passthrough
+  use OmniAuth::Passthrough::CapybaraMiddleware
 
   configure do
     set :environment, :test
