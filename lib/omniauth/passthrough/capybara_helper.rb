@@ -5,8 +5,7 @@ module OmniAuth
     module CapybaraHelper
       def omniauth_passthrough(params = {})
         original_url = current_url
-        visit "/omniauth_passthrough_capybara?#{Rack::Utils.build_nested_query(params)}"
-        click_on "Authenticate"
+        visit "/auth/passthrough/callback?#{Rack::Utils.build_nested_query(params)}"
         visit original_url
       end
     end
