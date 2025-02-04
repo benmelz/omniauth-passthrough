@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "json"
 require "sinatra_helper"
 require "omniauth/passthrough/rack_helper"
 
