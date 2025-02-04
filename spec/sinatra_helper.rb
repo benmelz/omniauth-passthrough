@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "json"
 require "omniauth/passthrough"
 require "rack/protection"
 require "rack/session"
@@ -22,7 +23,10 @@ class TestApp < Sinatra::Base
   end
 
   get "/auth/passthrough/callback" do
-    200
+    content_type :json
+    auth = request.env["omniauth.auth"].to_h
+                  .transform_values { |value| value.respond_to?(:to_h) ? value.to_h : value }
+    { auth:, params: }.to_json
   end
 end
 
