@@ -48,6 +48,10 @@ A number of test helpers are provided to help with using the strategy for test l
 # including one of the following helpers in your test
 include Omniauth::Passthrough::RackHelper # if using Rack::Test
 include Omniauth::Passthrough::ActionDispatchHelper # if using ActionDispatch (Rails)
+include Omniauth::Passthrough::CapybaraHelper # if using Capybara
+
+# and if using the capybara helper, a special Rack middleware only for use in your test environment
+use OmniAuth::Passthrough::CapybaraMiddleware
 
 # will make the following login helper available
 omniauth_passthrough(uid: 'my-uid', info: { email: 'my-email@example.com', first_name: 'My', last_name: 'Name' })

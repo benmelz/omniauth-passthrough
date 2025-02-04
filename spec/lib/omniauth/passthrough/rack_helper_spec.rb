@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
 require "json"
-require "sinatra_helper"
 require "omniauth/passthrough/rack_helper"
 
 RSpec.describe OmniAuth::Passthrough::RackHelper do
   include described_class
 
-  describe "#omniauth_passthrough" do
+  describe "#omniauth_passthrough", :rack do
     subject(:call) { omniauth_passthrough(params) }
 
     let(:params) do
@@ -20,8 +19,7 @@ RSpec.describe OmniAuth::Passthrough::RackHelper do
 
     it "authenticates with the omniauth passthrough strategy" do
       call
-      expect(JSON.parse(last_response.body)).to eq({ "auth" => params.except("even").merge("provider" => "passthrough"),
-                                                     "params" => params })
+      expect(last_request).to be_a_passthrough_callback_with(params)
     end
   end
 end

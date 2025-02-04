@@ -4,8 +4,7 @@ module OmniAuth
   module Passthrough
     module RackHelper
       def omniauth_passthrough(params = {})
-        post("/auth/passthrough", params)
-        follow_redirect!
+        get "/auth/passthrough/callback", params
       end
     end
   end
