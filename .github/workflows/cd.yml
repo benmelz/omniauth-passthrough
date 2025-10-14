@@ -10,7 +10,7 @@ jobs:
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.2
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
           node-version: 22
       - run: npm install --global semantic-release@24 @semantic-release/changelog@6 @semantic-release/git@10 semantic-release-rubygem@1
